@@ -1,0 +1,14 @@
+menu "Phoenix CPU platforms"
+    depends on MACH_PHOENIX
+
+choice
+    prompt "Board select"
+
+config TARGET_PHOENIX_ARTIX7
+    bool "artix 7"
+
+endchoice
+
+source "board/phoenix/artix7/Kconfig"
+
+endmenu

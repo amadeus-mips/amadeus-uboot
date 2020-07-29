@@ -1,0 +1,106 @@
+/dts-v1/;
+
+/ {
+	#address-cells = <1>;
+	#size-cells = <1>;
+	compatible = "phoenix,artix7";
+
+	cpus {
+		#address-cells = <1>;
+		#size-cells = <0>;
+		cpu@0 {
+			device_type = "cpu";
+			compatible = "mips,m14Kc";
+			clocks	= <&ext>;
+			reg = <0>;
+		};
+	};
+
+	ext: ext {
+		compatible = "fixed-clock";
+		#clock-cells = <0>;
+	};
+};
+
+/ {
+	compatible = "phoenix,artix7";
+
+	/** this is the ddr3 ram */
+	memory: memory@0 {
+		device_type = "memory";
+		reg = <0x0 0x8000000>;
+	};
+
+	cpuintc: interrupt-controller@bd000000 {
+		#address-cells = <0>;
+		#interrupt-cells = <1>;
+                reg = <0xbd000000 0x20>;
+		interrupt-controller;
+		compatible = "mti,cpu-interrupt-controller";
+	};
+
+	aliases {
+		console = &serial0;
+                serial = &serial0;
+		spi0 = &spi_flash;
+        //        eth = &axi_eternetlite;
+	};
+
+	serial0: serial@bfe40000 {
+		compatible = "ns16550a";
+		reg = <0xbfe40000 0x4000>;
+                reg-offset = <0>;
+		reg-io-width = <1>;
+                reg-shift = <2>;
+                clock-frequency = <33000000>;
+                current-speed = <57600>;
+		interrupts = <5 0>;
+                interrupt-parent = <&cpuintc>;
+	};
+	spi_flash: spi@bfc00000 {
+		device-type = "memory";
+		reg = <0xbfc00000 0x1000000>;
+
+	};
+
+//TODO: change to xilinx ip
+// 	spi_flash: spi@bc040000 {
+//                 #address-cells = <1>;
+//                 #size-cells = <0>;
+// 		compatible = "xlnx,xps-spi-2.00.a";
+// 		reg = <0xbc040000 0x1000>;
+// 		fifo-size = <256>;
+// 		xlnx,spi-mode = <0>;
+// 
+//                 spi-flash@0 {
+//                     compatible = "spi-flash", "jedec,spi-nor";
+//                     reg = <0>;
+//                     spi-max-frequency = <30000000>;
+//                 };
+// 	};
+
+//	axi_ethernetlite: ethernet@bc000000 {
+//		compatible = "xlnx,xps-ethernetlite-1.00.a";
+//		device_type = "network";
+//		local-mac-address = [19 98 00 01 00 29];
+//		phy-handle = <&phy0>;
+//		reg = <0xbc000000 0x10000>;
+//		xlnx,duplex = <0x1>;
+//		xlnx,include-global-buffers = <0x1>;
+//		xlnx,include-internal-loopback = <0x0>;
+//		xlnx,include-mdio = <0x1>;
+//		xlnx,instance = "axi_ethernetlite_inst";
+//		xlnx,rx-ping-pong = <0x1>;
+//		xlnx,s-axi-id-width = <0x1>;
+//		xlnx,tx-ping-pong = <0x1>;
+//		xlnx,use-internal = <0x0>;
+//		mdio {
+//				#address-cells = <1>;
+//				#size-cells = <0>;
+//				phy0: phy@1 {
+//						device_type = "ethernet-phy";
+//						reg = <1>;
+//				} ;
+//		} ;
+//	};
+};

@@ -148,6 +148,17 @@ config TARGET_XILFPGA
 	help
 	  This supports IMGTEC MIPSfpga platform
 
+config MACH_PHOENIX
+	bool "Support phoenix CPU"
+	select OF_CONTROL
+	select DM
+	select DM_SERIAL
+	select SUPPORTS_LITTLE_ENDIAN
+	select SUPPORTS_CPU_MIPS32_R1
+	select ROM_EXCEPTION_VECTORS
+	help
+	  This supports phoenix CPU on an Artix7 FPGA
+
 endchoice
 
 source "board/imgtec/boston/Kconfig"
@@ -160,6 +171,8 @@ source "arch/mips/mach-bmips/Kconfig"
 source "arch/mips/mach-jz47xx/Kconfig"
 source "arch/mips/mach-pic32/Kconfig"
 source "arch/mips/mach-mtmips/Kconfig"
+source "arch/mips/mach-phoenix/Kconfig"
+source "board/phoenix/artix7/Kconfig"
 
 if MIPS
 
