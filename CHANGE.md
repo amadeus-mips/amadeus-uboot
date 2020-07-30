@@ -46,3 +46,20 @@ removed time measuring
 
 ## text base
 `0xbfc20000`
+
+# pitfall
+
+## make 
+
+`make DEVICE_TREE=phoenix_artix7`
+
+## dump
+`mips-mti-elf-objdump -alD u-boot > u-boot.s`
+
+## documents
+
+find macros in config/ns16550.h
+
+# driver, dts and config
+
+dts determines the parameters for the driver, but does not **enable** the driver

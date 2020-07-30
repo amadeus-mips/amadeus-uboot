@@ -31,7 +31,7 @@ arch-$(CONFIG_CPU_MIPS32_R6) += -march=mips32r6 -Wa,-mips32r6
 arch-$(CONFIG_CPU_MIPS64_R1) += -march=mips64 -Wa,-mips64
 arch-$(CONFIG_CPU_MIPS64_R2) += -march=mips64r2 -Wa,-mips64r2
 arch-$(CONFIG_CPU_MIPS64_R6) += -march=mips64r6 -Wa,-mips64r6
-arch-$(CONFIG_MACH_PHOENIX)  += -mno-branch-likely -mdivide-breaks
+arch-$(CONFIG_MACH_PHOENIX)  += -mno-branch-likely -mdivide-breaks -mips32 -mno-llsc -msoft-float -mno-mad -mno-flush-func -mno-synci -mno-madd4
 
 # Allow extra optimization for specific CPUs/SoCs
 tune-$(CONFIG_MIPS_TUNE_4KC) += -mtune=4kc

@@ -51,7 +51,7 @@
 		reg = <0xbfe40000 0x4000>;
                 reg-offset = <0>;
 		reg-io-width = <1>;
-                reg-shift = <2>;
+                reg-shift = <0>;
                 clock-frequency = <33000000>;
                 current-speed = <57600>;
 		interrupts = <5 0>;

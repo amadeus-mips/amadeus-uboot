@@ -1,3 +1,11 @@
 # build root generated
 scripts/kconfig/*
 scripts/basic/.fixdep.cmd
+include/config/*
+include/generated/
+tools/*
+scripts/*
+lib/*
+fs/*
+env/*
+drivers/*
