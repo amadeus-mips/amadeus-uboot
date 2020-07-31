@@ -2,6 +2,7 @@
 #include <common.h>
 #include <linux/io.h>
 #include <div64.h>
+#include <asm/mipsregs.h>
 
 DECLARE_GLOBAL_DATA_PTR;
 
@@ -19,22 +20,23 @@ void reset_phy(void) {}
 #endif
 
 
+/** warning: this us is extremely inaccurate, however, it works */
 uint64_t notrace get_ticks(void)
 {
-	return readl((volatile uint32_t*) PHOENIX_ARTIX7_TIMER_ADDR);
+	return read_c0_count();
 }
 
 ulong get_timer(ulong base)
 {
         unsigned long now = timer_get_us();
-	do_div(now, 1000);
+	now = now >> 10;
 	return now - base;
 }
 
 unsigned long notrace timer_get_us(void)
 {
 	uint64_t ticks = get_ticks();
-	do_div(ticks, 100);
+	ticks = ticks >> 7;
 	return ticks;
 }
 

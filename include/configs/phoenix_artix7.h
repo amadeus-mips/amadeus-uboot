@@ -17,7 +17,6 @@
 #define CONFIG_SYS_MIPS_TIMER_FREQ	33000000
 
 /* Time Measuring */
-#define PHOENIX_ARTIX7_TIMER_ADDR		0xbff0e000
 //
 /* ---------------------------------------------------------
  * serial config
