@@ -4,17 +4,17 @@
 /* BootROM + MIG is pretty smart. DDR and Cache initialized */
 #define CONFIG_SKIP_LOWLEVEL_INIT
 
-// #define DEBUG
+#define DEBUG
 
 // this is from arch/mips/Kconfig configurations
 
 
-
+#define CONFIG_DM_ETH 1
 /*--------------------------------------------
  * CPU configuration
  */
 /* CPU Timer rate */
-#define CONFIG_SYS_MIPS_TIMER_FREQ	33000000
+#define CONFIG_SYS_MIPS_TIMER_FREQ	64000000 
 
 /* Time Measuring */
 //
@@ -24,8 +24,8 @@
 
 #define CONFIG_CONS_INDEX 1
 #define CONFIG_SYS_NS16550_SERIAL
-#define CONFIG_SYS_NS16550_COM1 0xbfe40000
-#define CONFIG_SYS_NS16550_CLK 33000000
+#define CONFIG_SYS_NS16550_COM1 0xbfd00000
+#define CONFIG_SYS_NS16550_CLK 100000000
 #define CONFIG_SYS_NS16550_REG_SIZE 1
 
 // commented for now, spl build will cause trouble
@@ -35,7 +35,7 @@
  */
 
 /* SDRAM Configuration (for final code, data, stack, heap) */
-#define CONFIG_SYS_SDRAM_BASE		0x80040000
+#define CONFIG_SYS_SDRAM_BASE		0x80000000
 #define CONFIG_SYS_SDRAM_SIZE		0x06000000	/* 128 Mbytes */
 #define CONIG_SYS_INIT_SP_ADDR		\
 	(CONFIG_SYS_SDRAM_BASE + CONFIG_SYS_SDRAM_SIZE - 0x1000)
@@ -80,7 +80,7 @@
 
 
 /* Flash */
-#define CONFIG_SYS_FLASH_BASE 0xbfc00000
+#define CONFIG_SYS_FLASH_BASE 0xbff00000
 #define CONFIG_FLASH_CFI_DRIVER
 #define CONFIG_SYS_FLASH_CFI
 #define CONFIG_SYS_FLASH_USE_BUFFER_WRITE
