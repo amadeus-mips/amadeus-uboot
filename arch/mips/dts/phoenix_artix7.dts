@@ -10,7 +10,7 @@
 		#size-cells = <0>;
 		cpu@0 {
 			device_type = "cpu";
-			compatible = "mips,m4Kc";
+			compatible = "mips,m14Kc";
 			clocks	= <&ext>;
 			reg = <0>;
 		};
@@ -46,28 +46,27 @@
 	};
 
 	serial0: serial@bfd00000 {
-		compatible = "ns16550a";
+		compatible = "ns16550";
 		reg = <0xbfd00000 0x1000>;
 		// refer to doc/device-tree-bindings/serial/8250.txt
 		// the start of the address offset
                 reg-offset = <0>;
-		// reg-io-width = <1>;
-                reg-shift = <0>;
-                clock-frequency = <100000000>;
-                current-speed = <57600>;
+                reg-shift = <2>;
+                clock-frequency = <50000000>;
+                current-speed = <115200>;
 		interrupts = <5>;
                 interrupt-parent = <&cpuintc>;
 	};
 	rom: rom@bfc00000 {
 		device-type = "rom";
-		reg = <0xbfc00000 0x8000000>;
+		reg = <0xbfc00000 0x1000000>;
 	};
 
  	spi_flash: spi@bff00000 {
                 #address-cells = <1>;
                 #size-cells = <0>;
  		compatible = "xlnx,xps-spi-2.00.a";
- 		reg = <0xbcff0000 0x1000000>;
+ 		reg = <0xbff00000 0x1000000>;
  		fifo-size = <256>;
  		xlnx,spi-mode = <0>;
  
@@ -82,8 +81,10 @@
 	axi_ethernetlite: ethernet@bff00000 {
 		compatible = "xlnx,xps-ethernetlite-1.00.a";
 		device_type = "network";
+		interrupt_parent = <&cpuintc>;
+		interrupt = <3>;
 		local-mac-address = [19 98 00 01 00 29];
-		phy-handle = <&phy0>;
+		phy-handle = <&phy1>;
 		reg = <0xbfe00000 0x10000>;
 		xlnx,duplex = <0x1>;
 		xlnx,include-global-buffers = <0x1>;
@@ -97,7 +98,7 @@
 		mdio {
 				#address-cells = <1>;
 				#size-cells = <0>;
-				phy0: phy@1 {
+				phy1: phy@1 {
 						device_type = "ethernet-phy";
 						reg = <1>;
 				} ;

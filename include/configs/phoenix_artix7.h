@@ -8,13 +8,14 @@
 
 // this is from arch/mips/Kconfig configurations
 
-
+#define CONFIG_SPL 0
+#define CONFIG_SPL_SKIP_RELOCATE 0
 #define CONFIG_DM_ETH 1
 /*--------------------------------------------
  * CPU configuration
  */
 /* CPU Timer rate */
-#define CONFIG_SYS_MIPS_TIMER_FREQ	64000000 
+#define CONFIG_SYS_MIPS_TIMER_FREQ	50000000 
 
 /* Time Measuring */
 //
@@ -25,7 +26,7 @@
 #define CONFIG_CONS_INDEX 1
 #define CONFIG_SYS_NS16550_SERIAL
 #define CONFIG_SYS_NS16550_COM1 0xbfd00000
-#define CONFIG_SYS_NS16550_CLK 100000000
+#define CONFIG_SYS_NS16550_CLK 50000000
 #define CONFIG_SYS_NS16550_REG_SIZE 1
 
 // commented for now, spl build will cause trouble
@@ -35,14 +36,14 @@
  */
 
 /* SDRAM Configuration (for final code, data, stack, heap) */
-#define CONFIG_SYS_SDRAM_BASE		0x80000000
-#define CONFIG_SYS_SDRAM_SIZE		0x06000000	/* 128 Mbytes */
+#define CONFIG_SYS_SDRAM_BASE		0x81000000
+#define CONFIG_SYS_SDRAM_SIZE		0x05000000	/* 128 Mbytes */
 #define CONIG_SYS_INIT_SP_ADDR		\
-	(CONFIG_SYS_SDRAM_BASE + CONFIG_SYS_SDRAM_SIZE - 0x1000)
+	(CONFIG_SYS_SDRAM_BASE + CONFIG_SYS_SDRAM_SIZE - 0x4000)
 
 #define CONFIG_SYS_INIT_RAM_SIZE CONFIG_SYS_SDRAM_SIZE
-#define CONFIG_SYS_INIT_SP_OFFSET \
-	(CONFIG_SYS_INIT_RAM_SIZE - GENERATED_GBL_DATA_SIZE)
+#define CONFIG_SYS_INIT_SP_OFFSET (CONFIG_SYS_INIT_RAM_SIZE - GENERATED_GBL_DATA_SIZE)
+
 
 #define CONFIG_SYS_MALLOC_LEN		(256 << 10)
 #define CONFIG_SYS_MONITOR_BASE		CONFIG_SYS_TEXT_BASE
@@ -51,8 +52,8 @@
 /*----------------------------------------------------------------------
  * Commands
  */
-//#define CONFIG_SYS_LONGHELP		/* undef to save memory */
-//#define CONFIG_CMDLINE_EDITING
+// #define CONFIG_SYS_LONGHELP		/* undef to save memory */
+// #define CONFIG_CMDLINE_EDITING
 
 /*------------------------------------------------------------
  * Console Configuration
@@ -68,8 +69,7 @@
 
 
 // #define CONFIG_ENV_SIZE		0x4000
-#define CONFIG_EXTRA_ENV_SETTINGS \
-    "autoload=no\0" 
+// #define CONFIG_EXTRA_ENV_SETTINGS "autoload=no\0" 
 
 
 /* ---------------------------------------------------------------------
@@ -80,15 +80,15 @@
 
 
 /* Flash */
-#define CONFIG_SYS_FLASH_BASE 0xbff00000
-#define CONFIG_FLASH_CFI_DRIVER
-#define CONFIG_SYS_FLASH_CFI
-#define CONFIG_SYS_FLASH_USE_BUFFER_WRITE
-#define CONFIG_SYS_MAX_FLASH_BANKS_DETECT   1
-#define CONFIG_SYS_MAX_FLASH_SECT           64
+// #define CONFIG_SYS_FLASH_BASE 0xbff00000
+// #define CONFIG_FLASH_CFI_DRIVER
+// #define CONFIG_SYS_FLASH_CFI
+// #define CONFIG_SYS_FLASH_USE_BUFFER_WRITE
+// #define CONFIG_SYS_MAX_FLASH_BANKS_DETECT   1
+// #define CONFIG_SYS_MAX_FLASH_SECT           64
 
 
-// #define CONFIG_ENV_IS_NOWHERE      1
+#define CONFIG_ENV_IS_NOWHERE      1
 // #define CONFIG_ENV_SIZE 0x1000
 
 
