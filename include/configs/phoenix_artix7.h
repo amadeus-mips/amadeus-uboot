@@ -36,10 +36,10 @@
  */
 
 /* SDRAM Configuration (for final code, data, stack, heap) */
-#define CONFIG_SYS_SDRAM_BASE		0x81000000
-#define CONFIG_SYS_SDRAM_SIZE		0x05000000	/* 128 Mbytes */
+#define CONFIG_SYS_SDRAM_BASE		0x80000000
+#define CONFIG_SYS_SDRAM_SIZE		0x07000000	/* 128 Mbytes */
 #define CONIG_SYS_INIT_SP_ADDR		\
-	(CONFIG_SYS_SDRAM_BASE + CONFIG_SYS_SDRAM_SIZE - 0x4000)
+	(CONFIG_SYS_SDRAM_BASE + CONFIG_SYS_SDRAM_SIZE - 0x8000)
 
 #define CONFIG_SYS_INIT_RAM_SIZE CONFIG_SYS_SDRAM_SIZE
 #define CONFIG_SYS_INIT_SP_OFFSET (CONFIG_SYS_INIT_RAM_SIZE - GENERATED_GBL_DATA_SIZE)
@@ -47,7 +47,7 @@
 
 #define CONFIG_SYS_MALLOC_LEN		(256 << 10)
 #define CONFIG_SYS_MONITOR_BASE		CONFIG_SYS_TEXT_BASE
-#define CONFIG_SYS_LOAD_ADDR		0x81000000 /* default load address */
+#define CONFIG_SYS_LOAD_ADDR		0x83000000 /* default load address */
 
 /*----------------------------------------------------------------------
  * Commands
