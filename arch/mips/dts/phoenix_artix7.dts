@@ -78,12 +78,12 @@
                  };
  	};
 
-	axi_ethernetlite: ethernet@bff00000 {
+	axi_ethernetlite: ethernet@bfe00000 {
 		compatible = "xlnx,xps-ethernetlite-1.00.a";
 		device_type = "network";
 		interrupt_parent = <&cpuintc>;
 		interrupt = <3>;
-		local-mac-address = [19 98 00 01 00 29];
+		local-mac-address = [e6 c7 26 bf e2 94];
 		phy-handle = <&phy1>;
 		reg = <0xbfe00000 0x10000>;
 		xlnx,duplex = <0x1>;
