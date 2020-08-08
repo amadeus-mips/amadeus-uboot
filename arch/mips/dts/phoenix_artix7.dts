@@ -79,12 +79,12 @@
  	};
 
 	axi_ethernetlite: ethernet@bfe00000 {
-		compatible = "xlnx,axi-ethernetlite-3.0", "xlnx,xps-ethernetlite-1.00.a";
+		compatible = "xlnx,xps-ethernetlite-1.00.a";
 		device_type = "network";
-		interrupt_parent = <&cpuintc>;
-		interrupt = <3>;
+		// interrupt_parent = <&cpuintc>;
+		// interrupt = <3>;
 		local-mac-address = [e6 c7 26 bf e2 94];
-		phy-handle = <&phy1>;
+		phy-handle = <&phy0>;
 		reg = <0xbfe00000 0x10000>;
 		xlnx,duplex = <0x1>;
 		xlnx,include-global-buffers = <0x1>;
@@ -98,7 +98,8 @@
 		mdio {
 				#address-cells = <1>;
 				#size-cells = <0>;
-				phy1: phy@1 {
+				phy0: phy@1 {
+						// compatible = "davicom, dm9161";
 						device_type = "ethernet-phy";
 						reg = <1>;
 				} ;
