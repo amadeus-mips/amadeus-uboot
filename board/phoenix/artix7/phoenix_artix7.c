@@ -36,7 +36,7 @@ ulong get_timer(ulong base)
 unsigned long notrace timer_get_us(void)
 {
 	uint64_t ticks = get_ticks();
-	ticks = ticks >> 7;
+	ticks = ticks >> 10;
 	return ticks;
 }
 
