@@ -16,7 +16,6 @@ int dram_init(void)
 }
 
 void reset_phy(void) {
-    phy_davicom_init();
 }
 
 
