@@ -4,7 +4,7 @@
 /* BootROM + MIG is pretty smart. DDR and Cache initialized */
 #define CONFIG_SKIP_LOWLEVEL_INIT
 
-// #define DEBUG
+#define DEBUG
 
 // this is from arch/mips/Kconfig configurations
 
@@ -69,7 +69,9 @@
 
 
 // #define CONFIG_ENV_SIZE		0x4000
-// #define CONFIG_EXTRA_ENV_SETTINGS "autoload=no\0" 
+
+#define CONFIG_EXTRA_ENV_SETTINGS \
+    "autoload=no\0"
 
 
 /* ---------------------------------------------------------------------
@@ -88,7 +90,7 @@
 // #define CONFIG_SYS_MAX_FLASH_SECT           64
 
 
-#define CONFIG_ENV_IS_NOWHERE      1
+// #define CONFIG_ENV_IS_NOWHERE      1
 // #define CONFIG_ENV_SIZE 0x1000
 
 

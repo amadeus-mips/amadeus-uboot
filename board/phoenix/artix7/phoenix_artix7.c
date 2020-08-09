@@ -15,9 +15,9 @@ int dram_init(void)
     return 0;
 }
 
-#ifdef CONFIG_RESET_PHY_R
-void reset_phy(void) {}
-#endif
+void reset_phy(void) {
+    phy_davicom_init();
+}
 
 
 /** warning: this us is extremely inaccurate, however, it works */
@@ -36,7 +36,7 @@ ulong get_timer(ulong base)
 unsigned long notrace timer_get_us(void)
 {
 	uint64_t ticks = get_ticks();
-	ticks = ticks >> 4;
+	ticks = ticks >> 5;
 	return ticks;
 }
 
