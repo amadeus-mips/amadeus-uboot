@@ -4,7 +4,7 @@
 /* BootROM + MIG is pretty smart. DDR and Cache initialized */
 #define CONFIG_SKIP_LOWLEVEL_INIT
 
-#define DEBUG
+// #define DEBUG
 
 // this is from arch/mips/Kconfig configurations
 

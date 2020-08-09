@@ -85,6 +85,8 @@
 		// interrupt = <3>;
 		local-mac-address = [e6 c7 26 bf e2 94];
 		phy-handle = <&phy0>;
+		phy-mode = "mii";
+		max-speed = <100>;
 		reg = <0xbfe00000 0x10000>;
 		xlnx,duplex = <0x1>;
 		xlnx,include-global-buffers = <0x1>;
